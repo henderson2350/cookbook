@@ -1,8 +1,40 @@
-{{!-- <section class = 'post'>
-    <h3>{{Recipe.name}}</h3>
-    <p>Created by: {{***}}</p>
-    <p>{{Recipe.ingredients}}</p>
-    <p>{{Recipe.instructions}}</p>
-</section>
+<header>
+    <h1>Create a Recipe</h1>
+</header>
+<main>
+    <div class='recipe-input'>
+        <form id='new-form'>
+            <fieldset>
+                <legend>Your Recipe</legend>
+                <table>
+                    <tr>
+                        <td><label for='input-title'>Title</label></td>
+                        <td><input type='text' id='input-title'/></td>
+                    </tr>
+                    <tr>
+                        <td><label for='input-instructions'>Instructions</label></td>
+                        <td><input type='text' id='input-instructions'/></td>
+                    </tr>
+                </table>
+            </fieldset>             
+            <tr>
+                <td colspan='2'><button id='submit-button'>submit</button></td>
+            </tr>
+        </form>
+        <form>
+            <fieldset>
+                <legend>Ingredients</legend>
+                <table>
+                    <tr>
+                        <td><input type='text' id='input-ingredients'/></td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'><button type='button' id='next-button'>next ingredient</button></td>
+                    </tr>   
+                </table>
+            </fieldset>       
+        </form>
+    </div>
+</main>
 
-//These are all fillers. Fix once we have js --}}
+<script src="./recipe.js"></script>

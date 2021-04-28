@@ -85,4 +85,13 @@ router.get('/profile', async (req, res) => {
     res.status(500).json(err)
   }
 })
+
+router.get('/create', async (req, res) => {
+  try {
+    res.render('create-post')
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
+
 module.exports = router
