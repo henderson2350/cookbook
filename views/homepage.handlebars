@@ -1,1 +1,15 @@
-<p>homepage</p>
+<header>
+    <h1>Dashboard</h1>
+</header>
+<main>
+    <h2>Recipes</h2>
+    {{#if loggedIn}}
+    <section class = 'flex-row justify-center'>
+        {{#each user.recipes as |recipe|}}
+        {{> recipe-details}}
+        {{/each}}
+    </section>
+</main>
+{{else}}
+<a href='/login'>Please login to view this page.</a>
+{{/if}}
