@@ -51,7 +51,7 @@ router.get('/recipe/:id', async (req, res) => {
   }
 })
 
-router.get('/userpage/:id', async (req, res) => {
+router.get('/myprofile', async (req, res) => {
   try {
     const userData = await User.findOne({where: {id: req.params.id}}, {
       include: [
@@ -62,7 +62,7 @@ router.get('/userpage/:id', async (req, res) => {
       ]
     })
     const user = userData.get({plain: true})
-    res.render('userpage', {user})
+    res.render('my-profile', {user})
   } catch (err) {
     res.status(500).json(err)
   }
