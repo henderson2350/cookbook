@@ -43,10 +43,10 @@ router.get('/recipe/:id', async (req, res) => {
         }
       ]
     })
+    res.render('individual-recipe', {recipeData})
   } catch (err) {
     res.status(500).json(err)
   }
-  res.render('individual-recipe', {recipeData})
 })
 
 router.get('/userpage', async (req, res) => {
@@ -63,3 +63,4 @@ router.get('/userpage', async (req, res) => {
 })
 
 module.exports = router
+module.exports = router;
