@@ -22,6 +22,7 @@ router.get("/", async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
+
 });
 
 router.get("/login", (req, res) => {
@@ -31,5 +32,34 @@ router.get("/login", (req, res) => {
   }
   res.render("login");
 });
+
+router.get('/recipe/:id', async (req, res) => {
+  try {
+    const recipeData = Recipe.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: 'username'
+        }
+      ]
+    })
+  } catch (err) {
+    res.status(500).json(err)
+  }
+  res.render('individual-recipe', {recipeData})
+})
+
+router.get('/userpage', async (req, res) => {
+  try {
+    const userData = User.findAll({
+      include: [{
+        model: Recipe,
+        attributes: name, ingredients, instructions
+      }]
+    })
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
 
 module.exports = router
