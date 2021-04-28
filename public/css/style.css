@@ -1,0 +1,48 @@
+:root {
+    --primary: #242222;
+    --secondary: #c0c0c0;
+    --background-primary: #ee5151;
+    --background-secondary: #423d3d;
+    --error: #e42e01;
+}
+
+body {
+    font-family: Arial;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: var(--background-primary);
+}
+
+a {
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit;
+}
+
+nav {
+    display: flex;
+    background: var(--background-secondary);
+}
+
+nav a {
+    color: var(--background-primary);
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+nav a:hover {
+    color: var(--secondary);
+}
+
+.container {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: flex-start;
+    align-items: center;
+}
