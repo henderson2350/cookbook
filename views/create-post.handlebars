@@ -8,30 +8,33 @@
                 <legend>Your Recipe</legend>
                 <table>
                     <tr>
-                        <td><label for='inputTitle'>Title</label></td>
-                        <td><input type='text' id='inputTitle'/></td>
+                        <td><label for='input-title'>Title</label></td>
+                        <td><input type='text' id='input-title'/></td>
                     </tr>
                     <tr>
-                        <td><label for='inputInstructions'>Instructions</label></td>
-                        <td><input type='text' id='inputInstructions'/></td>
+                        <td><label for='input-instructions'>Instructions</label></td>
+                        <td><input type='text' id='input-instructions'/></td>
                     </tr>
                 </table>
-            </fieldset>   
+            </fieldset>             
+            <tr>
+                <td colspan='2'><button id='submit-button'>submit</button></td>
+            </tr>
+        </form>
+        <form>
             <fieldset>
                 <legend>Ingredients</legend>
                 <table>
                     <tr>
-                        <td><label for='inputIngredients'>Ingredients</label></td>
-                        <td><input type='text' id='inputIngredients'/></td>
+                        <td><input type='text' id='input-ingredients'/></td>
                     </tr>
                     <tr>
-                        <td colspan='2'><button type='button' id='nextButton'>next ingredient</button></td>
+                        <td colspan='2'><button type='button' id='next-button'>next ingredient</button></td>
                     </tr>   
                 </table>
-            </fieldset>                 
-            <tr>
-                <td colspan='2'><button id='submitButton'>submit</button></td>
-            </tr>
+            </fieldset>       
         </form>
     </div>
 </main>
+
+<script src="./recipe.js"></script>

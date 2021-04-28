@@ -3,7 +3,10 @@ const { Recipe, User } = require("../../models");
 
 router.post("/new", async (req, res) => {
     try {
-        const newRecipe = Recipe.create(req.body);
+        const newRecipe = Recipe.create({
+            ...req.body, 
+            user_id: req.session.user_id
+        });
 
     res.status(200).json(newRecipe);
 
