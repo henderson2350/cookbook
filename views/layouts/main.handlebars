@@ -14,6 +14,16 @@
     <nav>
         <a href = '/'>Dashboard</a>
         {{#if loggedIn}}
+        <button id = 'logout' class = 'btn-no-style'>Logout</button>
+        {{else}}
+        <a href = '/login'>Login</a>
+        {{/if}}
     </nav>
+    <main>
+        {{{body}}}
+    </main>
+    {{#if loggedIn}}
+    <script src = '/js/logout.js'></script>
+    {{/if}}
 </body>
 </html>
