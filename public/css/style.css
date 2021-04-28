@@ -6,6 +6,12 @@
     --error: #e42e01;
 }
 
+header {
+    color: var(--background-primary);
+    background-color: var(--background-secondary);
+    text-align: center;
+}
+
 body {
     font-family: Arial;
     margin: 0;
@@ -27,10 +33,14 @@ a:visited {
 nav {
     display: flex;
     background: var(--background-secondary);
+    justify-content: center;
 }
 
 nav a {
     color: var(--background-primary);
+    background: var(--background-secondary);
+    padding: 14px 20px;
+    text-decoration: none;
     padding: 14px 20px;
     text-decoration: none;
     text-align: center;
@@ -39,6 +49,12 @@ nav a {
 nav a:hover {
     color: var(--secondary);
 }
+
+
+.navBtn {
+    color: var(--background-primary);
+}
+
 
 .container {
     display: flex;
