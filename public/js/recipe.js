@@ -27,3 +27,7 @@ const ingredientsFormHandler = async (event) => {
         })
     }
 }
+
+document
+  .querySelector('#new-form')
+  .addEventListener('submit', firstFormHandler)
