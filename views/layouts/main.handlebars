@@ -5,20 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cookbook</title>
-    <link rel = 'stylesheet' type = 'text/css' href = ''>
+    <link rel = 'stylesheet' type = 'text/css' href = './css/style.css'>
 </head>
 <body>
     <header>
         <h1>Welcome to our site</h1>
     </header>
     <nav>
-        <a href = '/'>Dashboard</a>
-        <a href = '/userpage'>Profile</a>
-        <a href = '/post'>Post</a>
+        <a class='navBtn'href = '/'>Dashboard</a>
+        <a class='navBtn' href = '/userpage'>Profile</a>
+        <a class='navBtn' href = '/post'>Post</a>
         {{#if loggedIn}}
-        <button id = 'logout' class = 'btn-no-style'>Logout</button>
+        <button class='navBtn' id = 'logout' class = 'btn-no-style'>Logout</button>
         {{else}}
-        <a href = '/login'>Login</a>
+        <a class='navBtn' href = '/login'>Login</a>
         {{/if}}
     </nav>
     <main>
