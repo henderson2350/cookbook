@@ -1,8 +1,32 @@
-{{!-- <section class = 'post'>
-    <h3>{{Recipe.name}}</h3>
-    <p>Created by: {{***}}</p>
-    <p>{{Recipe.ingredients}}</p>
-    <p>{{Recipe.instructions}}</p>
-</section>
-
-//These are all fillers. Fix once we have js --}}
+<header>
+    <h1>Create a Recipe</h1>
+</header>
+<main>
+    <div class='recipe-input'>
+        <form id='new-form'>
+            <fieldset>
+                <legend>Your Recipe</legend>
+                <table>
+                    <tr>
+                        <td><label for='inputTitle'>Title</label></td>
+                        <td><input type='text' id='inputTitle'/></td>
+                    </tr>
+                    <tr>
+                        <td><label for='inputInstructions'>Instructions</label></td>
+                        <td><input type='text' id='inputInstructions'/></td>
+                    </tr>
+                    <tr>
+                        <td><label for='inputIngredients'>Ingredients</label></td>
+                        <td><input type='text' id='inputIngredients'/></td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'><button type='submit' id='nextButton'>next ingredient</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'><button id='submitButton'>submit</button></td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+    </div>
+</main>
