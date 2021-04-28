@@ -1,8 +1,16 @@
 const router = require('express').Router();
-const { Model, DataTypes } = require('sequelize');
+const { Recipe } = require("../../models");
 
-const sequelize = require("../../config/connection");
+router.post("/new", async (req, res) => {
+    try {
+        const newRecipe = Recipe.create(req.body);
 
-class Recipe extends Model {}
+    res.status(200).json(newRecipe);
+
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
 
 module.exports = router;
