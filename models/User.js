@@ -29,6 +29,10 @@ class User extends Model {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      bio: {
+        type: DataTypes.STRING,
+        allowNull: false
+      }
     },
     {
       hooks: {
