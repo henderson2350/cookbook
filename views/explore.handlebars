@@ -1,13 +1,24 @@
 <header>
 </header>
 <main>
-    <h3 style="text-align: center; margin: 20px">Featured Recipe</h3>
     {{#if loggedIn}}
-    <section style= "text-align: center"class = 'flex-row justify-center'>
-        {{#each recipes as |recipe|}}
-        {{> recipe-details}}
-        {{/each}}
-    </section>
+    <div class='row'>
+        <div class='col-sm-6'>
+            <section style="text-align: center" class='flex-row justify-center'>
+                {{#each recipes as |recipe|}}
+                {{> recipe-details}}
+                {{/each}}
+            </section>
+        </div>
+        <div class='col-sm-6'>
+            <h3 style="text-align: center; margin: 20px">Featured Recipe</h3>
+            <div>
+                <p>{{randomRecipe.name}}</p>
+                <p>{{randomRecipe.ingredients}}</p>
+                <p>{{randomRecipe.instructions}}</p>
+            </div>
+        </div>
+    </div>
 </main>
 {{else}}
 <a href='/login'>Please login to view this page.</a>
