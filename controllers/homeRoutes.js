@@ -15,8 +15,14 @@ router.get("/", async (req, res) => {
       return recipe.get({ plain: true });
     });
 
+    const randomNumber = Math.floor(Math.random()*recipeData.length)
+    const randomRecipe = recipes[randomNumber]
+
+    console.log(randomRecipe)
+
     res.render("explore", {
       recipes,
+      randomRecipe,
       loggedIn: req.session.logged_in,
     });
   } catch (err) {
@@ -72,7 +78,7 @@ router.get("/myprofile", withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: {exclude: ['password']},
-      include: [{ model: Recipe}]
+      include: [{ model: Recipe}, {model: Follow}]
     })
 
     const user = userData.get({ plain: true})
