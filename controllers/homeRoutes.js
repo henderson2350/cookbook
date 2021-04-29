@@ -51,9 +51,21 @@ router.get("/recipe/:id", async (req, res) => {
   }
 });
 
-router.get("/myprofile", async (req, res) => {
-  res.render("my-profile");
-});
+
+router.get('/profile/:id', async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.params.id, {
+      include: [
+        {model: Recipe}
+      ]
+    })
+    const user = userData.get({ plain: true });
+    res.render("profile", {
+      ...user});
+  } catch (err) {
+    res.status(500)
+  }
+})
 
 // router.get('/myprofile', async (req, res) => {
 //   try {
