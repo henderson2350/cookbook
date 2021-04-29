@@ -60,13 +60,12 @@ router.get("/recipe/:id", async (req, res) => {
 router.get('/profile/:id', async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
-      include: [
-        {model: Recipe}
-      ]
+      attributes: {exclude: ['password']},
+      include: [{ model: Recipe}]
     })
     const user = userData.get({ plain: true });
     res.render("profile", {
-      user,
+      ...user,
       loggedIn: req.session.logged_in
     });
   } catch (err) {
