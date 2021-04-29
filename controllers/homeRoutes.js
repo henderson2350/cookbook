@@ -15,8 +15,14 @@ router.get("/", async (req, res) => {
       return recipe.get({ plain: true });
     });
 
+    const randomNumber = Math.floor(Math.random()*recipeData.length)
+    const randomRecipe = recipes[randomNumber]
+    
+    console.log(randomRecipe)
+
     res.render("explore", {
       recipes,
+      randomRecipe,
       loggedIn: req.session.logged_in,
     });
   } catch (err) {
