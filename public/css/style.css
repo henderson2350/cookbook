@@ -58,3 +58,7 @@ nav a:hover {
     align-content: flex-start;
     align-items: center;
 }
+
+#cookbook-logo {
+    margin: 20px;
+}
