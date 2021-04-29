@@ -66,6 +66,7 @@ router.get('/myprofile', async (req, res) => {
   } catch (err) {
     res.status(500).json(err)
   }
+  res.render('my-profile')
 })
 
 router.get('/profile', async (req, res) => {
