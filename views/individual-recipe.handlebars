@@ -1,6 +1,8 @@
 <section>
     <h3>{{recipe.name}}</h3>
-    <p>By: {{recipe.user.username}}</p>
+    <a href= "../profile/{{recipe.user.id}}">
+        <p>By: {{recipe.user.username}}</p>
+    </a>
     <p>{{recipe.ingredients}}</p>
     <p>{{recipe.instructions}}</p>
 </section>

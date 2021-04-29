@@ -1,12 +1,10 @@
 <section class='card'>
     <a href='/recipe/{{id}}'>
-        <header>{{name}}</header>
         <div class='card-body'>
             {{!-- {{#if id = recipe.user_id}} --}}
             <p>{{name}}</p>
             {{!-- {{/if}} --}}
-            <p>{{ingredients}}</p>
-            <p>{{instructions}}</p>
-        </div>
+            <p>{{user.username}}</p>
+       </div>
     </a>
 </section>
