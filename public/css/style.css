@@ -129,3 +129,13 @@ nav a:hover {
     .rightCol {
         text-align: center;
   }
+
+  .sidebar_back {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    width: 200px;
+    background: #444; 
+    position: absolute;
+  }
