@@ -1,0 +1,14 @@
+  {{#if recipes.length}}
+  <div class="col-md-6 project-list">
+    <h3>My Recipes:</h3>
+
+    {{#each recipes as |recipe|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/recipe/{{recipe.id}}">{{recipe.name}}</a></h4>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>

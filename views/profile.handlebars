@@ -1,6 +1,6 @@
-{{#if recipes.length}}
+{{!-- {{#if recipes.length}}
   <div class="col-md-6 project-list">
-    <h3>Recipes:</h3>
+    <h3>{{name}}'s Recipes:</h3>
 
     {{#each recipes as |recipe|}}
         <p>{{recipe.name}}</p>
@@ -11,4 +11,21 @@
   </div>
 {{/if}}
 
-<button type="button">Follow me</button>
+ --}}
+
+  {{#if recipes.length}}
+  <div class="col-md-6 project-list">
+    <h3>{{name}}'s Recipes:</h3>
+
+    {{#each recipes as |recipe|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/recipe/{{recipe.id}}">{{recipe.name}}</a></h4>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<button type="button" id="follow-button">Follow me</button>
