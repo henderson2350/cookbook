@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
       return recipe.get({ plain: true });
     });
 
-    res.render("homepage", {
+    res.render("explore", {
       recipes,
       loggedIn: req.session.logged_in,
     });
