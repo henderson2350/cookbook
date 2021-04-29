@@ -7,17 +7,17 @@ router.get("/", async (req, res) => {
     const recipeData = await Recipe.findAll({
       include: [
         {
-          model: User,
-          attributes: ["username"],
+          model: User
         },
       ],
     });
     const recipes = recipeData.map((recipe) => {
-      recipe.get({ plain: true });
+      return recipe.get({ plain: true });
     });
+
     res.render("homepage", {
       recipes,
-      loggedIn: req.session.loggedIn,
+      loggedIn: req.session.logged_in,
     });
   } catch (err) {
     console.log(err);
@@ -51,8 +51,40 @@ router.get("/recipe/:id", async (req, res) => {
   }
 });
 
-router.get("/myprofile", async (req, res) => {
-  res.render("my-profile");
+
+router.get('/profile/:id', async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.params.id, {
+      include: [
+        {model: Recipe}
+      ]
+    })
+    const user = userData.get({ plain: true });
+    res.render("profile", {
+      ...user});
+  } catch (err) {
+    res.status(500)
+  }
+})
+
+router.get("/myprofile", withAuth, async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: {exclude: ['password']},
+      include: [{ model: Recipe}]
+    })
+
+    const user = userData.get({ plain: true})
+
+    res.render("my-profile", {
+      ...user,
+      logged_in: true
+    });
+
+  } catch (err) {
+    res.status(500)
+  }
+  
 });
 
 // router.get('/myprofile', async (req, res) => {
