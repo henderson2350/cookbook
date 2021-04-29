@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
       return recipe.get({ plain: true });
     });
 
-    res.render("homepage", {
+    res.render("explore", {
       recipes,
       loggedIn: req.session.logged_in,
     });
@@ -95,5 +95,14 @@ router.get("/create", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get("/feed", (req, res) => {
+    try {
+      res.render("feed", {loggedIn: req.session.logged_in})
+    } catch (err) {
+      res.status(500).json(err)
+    }
+})
+
 
 module.exports = router;
