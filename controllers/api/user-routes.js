@@ -69,13 +69,12 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
-router.post('/follow/', async (req, res) => {
+router.post('/follow/:id', async (req, res) => {
   try {
-    // const followData = Follow.create({
-    //   follower: req.session.user_id,
-    //   following: req.params.id
-    // })
-    const followData = await Follow.create(req.body);
+    const followData = Follow.create({
+      follower: req.session.user_id,
+      following: req.params.id
+    })
 
     if (response.ok) {
       res.status(200).json(followData)
