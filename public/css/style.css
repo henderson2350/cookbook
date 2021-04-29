@@ -27,7 +27,7 @@ a {
 }
 
 a:visited {
-    
+    color: inherit;
 }
 
 nav {
@@ -41,15 +41,20 @@ nav a {
     background: var(--background-secondary);
     padding: 14px 20px;
     text-decoration: none;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
 }
 
 nav a:hover {
     color: var(--secondary);
 }
 
+
 .navBtn {
     color: var(--background-primary);
 }
+
 
 .container {
     display: flex;
