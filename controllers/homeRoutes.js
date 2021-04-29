@@ -39,13 +39,12 @@ router.get("/recipe/:id", async (req, res) => {
       include: [
         {
           model: User,
-          // attributes: "username",
         },
       ],
     });
 
     const recipe = recipeData.get({ plain: true });
-    res.render("individual-recipe", { recipe });
+    res.render("individual-recipe", { recipe, loggedIn: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -61,7 +60,9 @@ router.get('/profile/:id', async (req, res) => {
     })
     const user = userData.get({ plain: true });
     res.render("profile", {
-      ...user});
+      user,
+      loggedIn: req.session.logged_in
+    });
   } catch (err) {
     res.status(500)
   }
@@ -78,7 +79,7 @@ router.get("/myprofile", withAuth, async (req, res) => {
 
     res.render("my-profile", {
       ...user,
-      logged_in: true
+      loggedIn: req.session.logged_in
     });
 
   } catch (err) {
@@ -87,45 +88,9 @@ router.get("/myprofile", withAuth, async (req, res) => {
   
 });
 
-// router.get('/myprofile', async (req, res) => {
-//   try {
-//     const userData = await User.findOne({where: {id: req.params.id}}, {
-//       include: [
-//         {
-//           model: Recipe,
-//           attributes: name, ingredients, instructions
-//         }
-//       ]
-//     })
-//     const user = userData.get({plain: true})
-//     res.render('my-profile', {user})
-//   } catch (err) {
-//     res.status(500).json(err)
-//   }
-//   res.render('my-profile')
-// })
-
-// router.get('/profile', async (req, res) => {
-//   try {
-//     const userData = await User.findOne({where: {id: req.session.id}}, {
-//       include: [
-//         {
-//           model: Recipe,
-//           attributes: name, ingredients, instructions
-//         }
-//       ]
-//     })
-
-//     const user = userData.get({plain: true})
-//     res.render('profile', {user})
-//   } catch (err) {
-//     res.status(500).json(err)
-//   }
-// })
-
 router.get("/create", async (req, res) => {
   try {
-    res.render("create-post");
+    res.render("create-post", {loggedIn: req.session.logged_in});
   } catch (err) {
     res.status(500).json(err);
   }
