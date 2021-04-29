@@ -5,9 +5,12 @@
     <div class='row'>
         <div class='col-sm-6'>
             <section style="text-align: center" class='flex-row justify-center'>
+                <h3 style="text-align: center; margin: 20px">Recipes</h3>
+                <div style="">
                 {{#each recipes as |recipe|}}
                 {{> recipe-details}}
                 {{/each}}
+                </div>
             </section>
         </div>
         <div class='col-sm-6'>

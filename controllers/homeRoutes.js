@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 
     const randomNumber = Math.floor(Math.random()*recipeData.length)
     const randomRecipe = recipes[randomNumber]
-    
+
     console.log(randomRecipe)
 
     res.render("explore", {
@@ -78,7 +78,7 @@ router.get("/myprofile", withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: {exclude: ['password']},
-      include: [{ model: Recipe}]
+      include: [{ model: Recipe}, {model: Follow}]
     })
 
     const user = userData.get({ plain: true})
