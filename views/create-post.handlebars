@@ -1,40 +1,28 @@
-<header>
-    <h1>Create a Recipe</h1>
-</header>
-<main>
-    <div class='recipe-input'>
-        <form id='new-form'>
-            <fieldset>
-                <legend>Your Recipe</legend>
-                <table>
-                    <tr>
-                        <td><label for='input-title'>Title</label></td>
-                        <td><input type='text' id='input-title'/></td>
-                    </tr>
-                    <tr>
-                        <td><label for='input-instructions'>Instructions</label></td>
-                        <td><input type='text' id='input-instructions'/></td>
-                    </tr>
-                </table>
-            </fieldset>             
-            <tr>
-                <td colspan='2'><button type='submit' id='submit-button'>submit</button></td>
-            </tr>
-        </form>
-        <form>
-            <fieldset>
-                <legend>Ingredients</legend>
-                <table>
-                    <tr>
-                        <td><input type='text' id='input-ingredients'/></td>
-                    </tr>
-                    <tr>
-                        <td colspan='2'><button type='button' id='next-button'>next ingredient</button></td>
-                    </tr>   
-                </table>
-            </fieldset>       
-        </form>
-    </div>
-</main>
+<div class="col-md-6">
+    <h3>Add a New Recipe:</h3>
 
-<script src="./recipe.js"></script>
+    <form class="form new-recipe-form">
+
+      <div class="form-group">
+        <label for="recipe-name">Recipe Name:</label><br/>
+        <input class="form-input" type="text" id="recipe-name"/>
+      </div>
+    <br/>
+      <div class="form-group">
+        <label for="project-funding">Ingredients (please separate each ingredient by a comma)</label><br/>
+        <textarea class="form-input" id="ingredient-list"></textarea>
+      </div>
+<br/>
+      <div class="form-group">
+        <label for="project-desc">Cooking Instructions:</label><br/>
+        <textarea class="form-input" id="instructions"></textarea>
+      </div>
+<br/>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+
+    </form>
+  </div>
+
+<script src="/js/recipe.js"></script>
