@@ -1,5 +1,6 @@
-const router = require('express').Router();
-const { User, Recipe } = require('../models');
+const router = require("express").Router();
+const { User, Recipe } = require("../models");
+const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
@@ -22,7 +23,6 @@ router.get("/", async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
-
 });
 
 router.get("/login", (req, res) => {
@@ -33,66 +33,70 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.get('/recipe/:id', async (req, res) => {
+router.get("/recipe/:id", async (req, res) => {
   try {
     const recipeData = await Recipe.findByPk(req.params.id, {
       include: [
         {
           model: User,
-          attributes: 'username'
-        }
-      ]
-    })
+          attributes: "username",
+        },
+      ],
+    });
 
-    const recipe = recipeData.get({ plain: true })
-    res.render('individual-recipe', {recipe})
+    const recipe = recipeData.get({ plain: true });
+    res.render("individual-recipe", { recipe });
   } catch (err) {
-    res.status(500).json(err)
+    res.status(500).json(err);
   }
-})
+});
 
-router.get('/myprofile', async (req, res) => {
+router.get("/myprofile", async (req, res) => {
+  res.render("my-profile");
+});
+
+// router.get('/myprofile', async (req, res) => {
+//   try {
+//     const userData = await User.findOne({where: {id: req.params.id}}, {
+//       include: [
+//         {
+//           model: Recipe,
+//           attributes: name, ingredients, instructions
+//         }
+//       ]
+//     })
+//     const user = userData.get({plain: true})
+//     res.render('my-profile', {user})
+//   } catch (err) {
+//     res.status(500).json(err)
+//   }
+//   res.render('my-profile')
+// })
+
+// router.get('/profile', async (req, res) => {
+//   try {
+//     const userData = await User.findOne({where: {id: req.session.id}}, {
+//       include: [
+//         {
+//           model: Recipe,
+//           attributes: name, ingredients, instructions
+//         }
+//       ]
+//     })
+
+//     const user = userData.get({plain: true})
+//     res.render('profile', {user})
+//   } catch (err) {
+//     res.status(500).json(err)
+//   }
+// })
+
+router.get("/create", async (req, res) => {
   try {
-    const userData = await User.findOne({where: {id: req.params.id}}, {
-      include: [
-        {
-          model: Recipe,
-          attributes: name, ingredients, instructions
-        }
-      ]
-    })
-    const user = userData.get({plain: true})
-    res.render('my-profile', {user})
+    res.render("create-post");
   } catch (err) {
-    res.status(500).json(err)
+    res.status(500).json(err);
   }
-  res.render('my-profile')
-})
+});
 
-router.get('/profile', async (req, res) => {
-  try {
-    const userData = await User.findOne({where: {id: req.session.id}}, {
-      include: [
-        {
-          model: Recipe,
-          attributes: name, ingredients, instructions
-        }
-      ]
-    })
-
-    const user = userData.get({plain: true})
-    res.render('profile', {user})
-  } catch (err) {
-    res.status(500).json(err)
-  }
-})
-
-router.get('/create', async (req, res) => {
-  try {
-    res.render('create-post')
-  } catch (err) {
-    res.status(500).json(err)
-  }
-})
-
-module.exports = router
+module.exports = router;
