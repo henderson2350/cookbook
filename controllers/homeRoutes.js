@@ -74,6 +74,9 @@ router.get('/profile/:id', async (req, res) => {
 })
 
 router.get("/myprofile", withAuth, async (req, res) => {
+
+  console.log("*****route hit******");
+
   try {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: {exclude: ['password']},

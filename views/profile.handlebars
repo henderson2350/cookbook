@@ -1,31 +1,31 @@
 {{!-- {{#if recipes.length}}
-  <div class="col-md-6 project-list">
-    <h3>{{name}}'s Recipes:</h3>
+<div class="col-md-6 project-list">
+  <h3>{{name}}'s Recipes:</h3>
 
-    {{#each recipes as |recipe|}}
-        <p>{{recipe.name}}</p>
-        <p>{{recipe.ingredients}}</p>
-        <p>{{recipe.instructions}}</p>
-    {{/each}}
+  {{#each recipes as |recipe|}}
+  <p>{{recipe.name}}</p>
+  <p>{{recipe.ingredients}}</p>
+  <p>{{recipe.instructions}}</p>
+  {{/each}}
 
-  </div>
+</div>
 {{/if}}
 
- --}}
+--}}
 
-  {{#if recipes.length}}
-  <div class="col-md-6 project-list">
-    <h3>{{name}}'s Recipes:</h3>
+{{#if recipes.length}}
+<div class="col-md-6 project-list">
+  <h3>{{name}}'s Recipes:</h3>
 
-    {{#each recipes as |recipe|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/recipe/{{recipe.id}}">{{recipe.name}}</a></h4>
-      </div>
+  {{#each recipes as |recipe|}}
+  <div class="row mb-2">
+    <div class="col-md-8">
+      <h4><a href="/recipe/{{recipe.id}}">{{recipe.name}}</a></h4>
     </div>
-    {{/each}}
   </div>
-  {{/if}}
+  {{/each}}
+</div>
+{{/if}}
 </div>
 
-<button type="button" data-id="{{id}}"id="follow-button">Follow me</button>
+<button type="button" data-id="{{id}}" id="follow-button">Follow me</button>
