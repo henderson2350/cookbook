@@ -1,43 +1,54 @@
-<h2>Login</h2>
+<div class="row">
+  <h2 class="text-center">Login and Sign-Up</h2>
+</div>
 
 <form class="form login-form">
-  <div class="form-group">
-    <label for="username-login">Username:</label>
-    <input class="form-input" type="text" id="username-login" />
-  </div>
-  <div class="form-group">
-    <label for="password-login">Password:</label>
-    <input class="form-input" type="password" id="password-login" />
-  </div>
-  <div class="form-group">
-    <button class="btn btn-primary" type="submit">Login</button>
-  </div>
+  <div style="margin: 20px" class="row" id="target1">
+
+    <div class="target2 col-md-6">
+      <h2>Login</h2>
+
+      <div class="form-group">
+        <label for="username-login">Username:</label>
+        <input class="form-input" type="text" id="username-login" />
+      </div>
+      <br />
+      <div class="form-group">
+        <label for="password-login">Password:</label>
+        <input class="form-input" type="password" id="password-login" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Login</button>
+      </div>
+    </div>
+    <div class="target3 col-md-6">
+
 </form>
-<br />
 
 <h2>Sign Up</h2>
-    <form class="form signup-form">
-      <div class="form-group">
-        <label>Name:</label>
-        <input class="form-input" type="text" id="name-signup" />
-      </div>
-      <div class="form-group">
-        <label>Username:</label>
-        <input class="form-input" type="text" id="username-signup" />
-      </div>
-      <div class="form-group">
-        <label>Password:</label>
-        <input class="form-input" type="password" id="password-signup" />
-      </div>
-      <div class="form-group">
-        <label for="bio-signup">Biography(Tell us about yourself):</label><br />
-        <textarea class="form-input" id="bio-signup"></textarea>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">Signup</button>
-      </div>
-    </form>
+<form class="form signup-form">
+  <div class="form-group">
+    <label>Name:</label>
+    <input class="form-input" type="text" id="name-signup" />
   </div>
+  <div class="form-group">
+    <label>Username:</label>
+    <input class="form-input" type="text" id="username-signup" />
+  </div>
+  <div class="form-group">
+    <label>Password:</label>
+    <input class="form-input" type="password" id="password-signup" />
+  </div>
+  <div class="form-group">
+    <label for="bio-signup">Biography(Tell us about yourself):</label><br />
+    <textarea class="form-input" id="bio-signup"></textarea>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit">Signup</button>
+  </div>
+</form>
+
+</div>
 </div>
 
 <script src="/js/login.js"></script>
