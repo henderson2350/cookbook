@@ -1,7 +1,7 @@
 const User = require('./User')
 const Recipe = require('./Recipe')
 const { Model } = require('sequelize');
-const Follow = require('./follower');
+const Follow = require('./Follow');
 
 
 
@@ -16,13 +16,12 @@ Recipe.belongsTo(User, {
 
 
 User.belongsToMany(User, { through: Follow, as: 'Followers', foreignKey: 'follower'});
-
 User.belongsToMany(User, { through: Follow, as: 'Following', foreignKey: 'following'});
 
-User.hasMany(Follow, { foreignKey: 'following' });
-User.hasMany(Follow, { foreignKey: 'follower' });
+// User.hasMany(Follow, { foreignKey: 'following' });
+// // User.hasMany(Follow, { foreignKey: 'follower' });
 
-Follow.belongsTo(User, { foreignKey: 'following', as: 'Following' });
-Follow.belongsTo(User, { foreignKey: 'follower', as: 'Follower' });
+// Follow.belongsTo(User, { foreignKey: 'following', as: 'Following' });
+// // Follow.belongsTo(User, { foreignKey: 'follower', as: 'Follower' });
 
 module.exports = { User, Recipe, Follow}
