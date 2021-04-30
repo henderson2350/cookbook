@@ -15,7 +15,7 @@
 
   {{#if recipes.length}}
   <div class="col-md-6 project-list">
-    <h3>{{name}}'s Recipes:</h3>
+    <h3>{{name}}'s Recipes: {{id}}</h3>
 
     {{#each recipes as |recipe|}}
     <div class="row mb-2">
@@ -28,4 +28,4 @@
   {{/if}}
 </div>
 
-<button type="button" data-id="{{id}}"id="follow-button">Follow me</button>
+<button type="button" data-id="{{id}}" id="follow-button">Follow me</button>
