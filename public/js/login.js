@@ -14,7 +14,9 @@ const loginFormHandler = async (event) => {
       if (response.ok) {
         document.location.replace('/');
       } else {
-        alert(response.statusText);
+        console.log(response.statusText);
+        alert('Incorrect username or password.');
+        location.reload();
       }
     }
   };
@@ -37,7 +39,9 @@ const loginFormHandler = async (event) => {
       if (response.ok) {
         document.location.replace('/');
       } else {
-        alert(response.statusText);
+        console.log(response.statusText);
+        alert('This username is already in use.');
+        location.reload();
       }
     }
   };
