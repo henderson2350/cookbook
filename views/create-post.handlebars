@@ -1,3 +1,4 @@
+{{#if loggedIn}}
 <div class="row">
   <h2 class="text-center">Add a New Recipe:</h2>
 </div>
@@ -94,8 +95,9 @@
     </div> --}}
   </div>
 </form>
-
-
 </div>
+{{else}}
+<a href='/login'>Please login to view this page.</a>
+{{/if}}
 
 <script src="/js/recipe.js"></script>
