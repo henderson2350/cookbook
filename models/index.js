@@ -26,23 +26,18 @@ Comment.belongsTo(Recipe, {
 
 
 User.belongsToMany(User, { 
-    through: Follow, 
-    foreignKey: 'follower_id',
-    // otherKey: "following_id",
-    as: 'followers', 
+    through: Follow, as: 'Followers', 
+    foreignKey: 'follower'
 });
 
 User.belongsToMany(User, { 
-    through: Follow, 
-    foreignKey: 'following_id',
-    // otherKey: "follower_id",
-    as: 'following', 
-});
+    through: Follow, as: 'Following', 
+    foreignKey: 'following'});
 
 // User.hasMany(Follow, { foreignKey: 'following' });
 // // User.hasMany(Follow, { foreignKey: 'follower' });
 
-// Follow.belongsTo(User, { foreignKey: 'following', as: 'Following' });
-// // Follow.belongsTo(User, { foreignKey: 'follower', as: 'Follower' });
+Follow.belongsTo(User, { foreignKey: 'following', as: 'Following' });
+Follow.belongsTo(User, { foreignKey: 'follower', as: 'Follower' });
 
 module.exports = { User, Recipe, Comment, Follow}

@@ -1,6 +1,6 @@
 <section>
     <h3>{{recipe.name}}</h3>
-    <a href= "../profile/{{recipe.user.id}}">
+    <a href="../profile/{{recipe.user.id}}">
         <p>By: {{recipe.user.name}}</p>
     </a>
     <p>{{recipe.ingredients}}</p>
@@ -8,10 +8,10 @@
     <div>
         <form class='form new-comment-form'>
             <textarea class="form-input w-100" id="comment"></textarea>
-            <button type = 'submit' class = 'btn btn-comment'>post</button>
+            <button type='button' class='btn btn-comment' id="comment-button" data-id="{{recipe.id}}">post</button>
         </form>
     </div>
-    <a href = '/comment/{{id}}'>
+    <a href='/comment/{{id}}'>
         <div class='card-body'>
             {{user.name}}
             {{#each comments as |comment|}}
