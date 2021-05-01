@@ -1,5 +1,4 @@
 const followButtonHandler = async (event) => {
-  alert("Button pushed");
   event.preventDefault()
 
     if (event.target.hasAttribute('data-id')) {

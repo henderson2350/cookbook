@@ -2,12 +2,13 @@ const router = require('express').Router();
 const { response } = require('express');
 const { Comment, Recipe, User } = require('../../models');
 
-router.post('/new', async (req, res) => {
+router.post('/new/:id', async (req, res) => {
     console.log('router');
     try {
         const newComment = Comment.create({
             ...req.body,
-            recipe_id: req.session.recipe_id
+            user_id: req.session.user_id,
+            // recipe_id: req.params.id,
         });
         if (response.ok) {
             res.status(200).json(newComment)

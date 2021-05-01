@@ -12,14 +12,14 @@ Follow.init(
             autoIncrement:true,
 
         },
-        follower_id: {
+        follower: {
             type:DataTypes.INTEGER,
             references: {
                 model:'user',
                 key:'id'
             }
         },
-        following_id: {
+        following: {
             type:DataTypes.INTEGER,
             references: {
                 model:'user',
@@ -33,7 +33,7 @@ Follow.init(
         timestamps:false,
         freezeTableName: true,
         underscored:true,
-        modelName: 'follower'
+        modelName: 'follow'
     }
   
 )

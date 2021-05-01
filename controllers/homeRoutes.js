@@ -77,20 +77,16 @@ router.get("/profile/:id", async (req, res) => {
 });
 
 router.get("/myprofile", async (req, res) => {
- console.log("please work")
   try {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ["password"] },
       include: [{ model: Recipe }],
     });
-
-    // const followData = await User.findByPk(req.session.user_id, {
-    //   attributes: {exclude: ["password"] },
-    //   include: ["followers"]
-    // })
     
-    // const followData = await Follow.findAll(
-    //   {where: {follower: req.session.user_id}})
+    const followData = await Follow.findAll(
+      {where: {follower: req.session.user_id},
+      // include: [{model: User, as: "followers"}]
+    });
 
     // const followData = await User.findAll({
     //   include: {
@@ -101,14 +97,11 @@ router.get("/myprofile", async (req, res) => {
     //     }
     //   }
     // })
-    
-    // const followers = followData.map((follower) => follower.get({ plain: true }))
 
     const user = userData.get({ plain: true });
-    // console.log(followers);
 
-    // const following = followData.map((follow) => follow.get({plain: true}))
-    // console.log(following);
+    const following = followData.map((follow) => follow.get({plain: true}))
+    console.log(following);
 
 
     res.render("my-profile", {
