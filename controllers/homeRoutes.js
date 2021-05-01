@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Recipe, Follow } = require("../models");
+const { User, Recipe, Follow, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
@@ -49,9 +49,20 @@ router.get("/recipe/:id", async (req, res) => {
       ],
     });
 
+    const commentData = await Comment.findAll(
+      {where: {recipe_id: req.params.id}})
+
+
+
     const recipe = recipeData.get({ plain: true });
+
+    const comments = commentData.map((comment)=> comment.get({plain: true}))
+
+      console.log(comments);
+
     res.render("individual-recipe", {
       recipe,
+      comments,
       loggedIn: req.session.logged_in,
     });
   } catch (err) {
@@ -97,16 +108,6 @@ router.get("/myprofile", async (req, res) => {
       {where: {follower: req.session.user_id},
       include: ["Following"],
     });
-
-    // const followData = await User.findAll({
-    //   include: {
-    //     model: Follow,
-    //     as: "follower",
-    //     where: {
-    //       follower: req.session.user_id
-    //     }
-    //   }
-    // })
 
     const user = userData.get({ plain: true });
 
