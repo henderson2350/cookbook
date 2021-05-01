@@ -1,5 +1,6 @@
 const User = require('./User')
 const Recipe = require('./Recipe')
+const Comment = require('./Comment')
 const { Model } = require('sequelize');
 const Follow = require('./Follow');
 
@@ -14,6 +15,15 @@ Recipe.belongsTo(User, {
     foreignKey: 'user_id'
 })
 
+Recipe.hasMany(Comment, {
+    foreignKey: 'recipe_id',
+    onDelete: 'CASCADE'
+})
+
+Comment.belongsTo(Recipe, {
+    foreignKey: 'recipe_id',
+})
+
 
 User.belongsToMany(User, { through: Follow, as: 'Followers', foreignKey: 'follower'});
 User.belongsToMany(User, { through: Follow, as: 'Following', foreignKey: 'following'});
@@ -24,4 +34,4 @@ User.belongsToMany(User, { through: Follow, as: 'Following', foreignKey: 'follow
 // Follow.belongsTo(User, { foreignKey: 'following', as: 'Following' });
 // // Follow.belongsTo(User, { foreignKey: 'follower', as: 'Follower' });
 
-module.exports = { User, Recipe, Follow}
+module.exports = { User, Recipe, Comment, Follow}
