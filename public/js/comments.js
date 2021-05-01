@@ -1,5 +1,6 @@
 const newCommentHandler = async (event) => {
     event.preventDefault();
+    alert("button pushed");
 
     const comment = document.querySelector('#comment').value.trim();
     const id = event.target.getAttribute('data-id');
@@ -20,6 +21,6 @@ const newCommentHandler = async (event) => {
 };
 
 document
-.querySelector('.new-comment-form')
-.addEventListener('submit', newCommentHandler);
+.querySelector('#comment-button')
+.addEventListener('click', newCommentHandler);
 
