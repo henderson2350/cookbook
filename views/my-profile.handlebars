@@ -1,15 +1,23 @@
-  {{#if recipes.length}}
-  <div class="col-md-6 project-list">
-    <h3>My Recipes:</h3>
+{{#if recipes.length}}
+<div class="col-md-6 project-list">
+  <h3>My Recipes:</h3>
 
-    {{#each recipes as |recipe|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/recipe/{{recipe.id}}">{{recipe.name}}</a></h4>
-      </div>
+  {{#each recipes as |recipe|}}
+  <div class="row mb-2">
+    <div class="col-md-8">
+      <h4><a href="/recipe/{{recipe.id}}">{{recipe.name}}</a></h4>
     </div>
-    {{/each}}
   </div>
-  {{/if}}
-  
+  {{/each}}
+</div>
+{{/if}}
+
+Following:
+<ul>
+  {{#each following as |follow|}}
+  <li>
+    <a href="/profile/{{follow.Following.id}}">{{follow.Following.name}}</a>
+  </li>
+  {{/each}}
+</ul>
 </div>

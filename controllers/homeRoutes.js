@@ -85,7 +85,8 @@ router.get("/myprofile", async (req, res) => {
     
     const followData = await Follow.findAll(
       {where: {follower: req.session.user_id},
-      include: ["Following"] 
+      include: ["Following"],
+      attributes: {exclude: "password"}
     });
 
     // const followData = await User.findAll({
@@ -101,11 +102,14 @@ router.get("/myprofile", async (req, res) => {
     const user = userData.get({ plain: true });
 
     const following = followData.map((follow) => follow.get({plain: true}))
+    console.log(user);
+    console.log("-------------------------------")
     console.log(following);
 
 
     res.render("my-profile", {
       ...user,
+      following,
       loggedIn: req.session.logged_in,
     });
   } catch (err) {
