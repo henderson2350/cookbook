@@ -66,9 +66,19 @@ router.get("/profile/:id", async (req, res) => {
       attributes: { exclude: ["password"] },
       include: [{ model: Recipe }],
     });
+
+    const followData = await Follow.findAll(
+      {where: {follower: req.params.id},
+    include: ["Following"],
+  });
+
+    const following = followData.map((follow) => follow.get({plain: true}))
     const user = userData.get({ plain: true });
+
+
     res.render("profile", {
       ...user,
+      following,
       loggedIn: req.session.logged_in,
     });
   } catch (err) {
@@ -86,7 +96,6 @@ router.get("/myprofile", async (req, res) => {
     const followData = await Follow.findAll(
       {where: {follower: req.session.user_id},
       include: ["Following"],
-      attributes: {exclude: "password"}
     });
 
     // const followData = await User.findAll({
