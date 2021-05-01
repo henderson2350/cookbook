@@ -2,7 +2,7 @@
   --primary: #222224;
   --secondary: #d3d6da;
   --background-primary: #d3d6da;
-  --background-secondary: #e64646;
+  --background-secondary: #a33232;
   --error: #e42e01;
   --grey: #5f6163;
 }
@@ -15,11 +15,26 @@
 header {
   color: var(--background-primary);
   background-color: var(--background-secondary);
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+header div {
+  margin: 30px 26px 0 0;
+}
+
+header div a {
+  color: var(--secondary);
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+header h1 {
+  font-style: Helvetica Neue;
 }
 
 body {
-  font-family: "Lucida Grande", Geneva, Verdana, sans-serif;
+  font-family: Consolas;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -128,6 +143,10 @@ div.content {
     display: right;
     clear: both;
   } */
+.head {
+  border-bottom: 20px solid #be5252;
+}
+
 .middleCol {
   text-align: center;
 }

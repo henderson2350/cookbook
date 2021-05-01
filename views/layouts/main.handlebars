@@ -12,31 +12,30 @@
 </head>
 
 <body>
-    <header>
-        <h1 id="cookbook-logo">cookbook</h1>
+    <header class='head'>
+        <h1 id="cookbook-logo">cookbook</h1>  
+        <div>   
+            {{#if loggedIn}}
+            <button id='logout' class='btn btn-link'>Logout</button>
+            {{else}}
+            <a class='navBtn' href='/login'>Login</a>
+            {{/if}}
+        </div>   
     </header>
-
-    <nav>
-        {{#if loggedIn}}
-        <a class='navBtn' href='/myprofile'>Profile</a>
-        <button id='logout' class='btn btn-link'>Logout</button>
-        {{else}}
-        <a class='navBtn' href='/login'>Login</a>
-        {{/if}}
-    </nav>
-
 
     <div class="row">
         <div class="sidebar col-lg-2">
-            <a class='navBtn' href='/create'>Post</a>
             <a class='navBtn' href='/'>Explore</a>
             <a class='navBtn' href='/feed'>My Feed</a>
+            <a class='navBtn' href='/create'>Post</a>
+            {{#if loggedIn}}
+            <a class='navBtn' href='/myprofile'>Profile</a>
+            {{/if}}
         </div>
         <div class="col-lg-10">{{{body}}}</div>
     </div>
     {{#if loggedIn}}
     <script src='/js/logout.js'></script>
-    <script src="/js/profile.js"></script>
     {{/if}}
 </body>
 
