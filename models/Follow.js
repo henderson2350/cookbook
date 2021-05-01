@@ -12,14 +12,14 @@ Follow.init(
             autoIncrement:true,
 
         },
-        follower: {
+        follower_id: {
             type:DataTypes.INTEGER,
             references: {
                 model:'user',
                 key:'id'
             }
         },
-        following: {
+        following_id: {
             type:DataTypes.INTEGER,
             references: {
                 model:'user',
