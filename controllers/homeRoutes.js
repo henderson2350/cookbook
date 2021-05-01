@@ -85,7 +85,7 @@ router.get("/myprofile", async (req, res) => {
     
     const followData = await Follow.findAll(
       {where: {follower: req.session.user_id},
-      // include: [{model: User, as: "followers"}]
+      include: ["Following"] 
     });
 
     // const followData = await User.findAll({
