@@ -26,13 +26,18 @@ Comment.belongsTo(Recipe, {
 
 
 User.belongsToMany(User, { 
-    through: Follow, as: 'Followers', 
-    foreignKey: 'follower'
+    through: Follow, 
+    foreignKey: 'follower_id',
+    // otherKey: "following_id",
+    as: 'followers', 
 });
 
 User.belongsToMany(User, { 
-    through: Follow, as: 'Following', 
-    foreignKey: 'following'});
+    through: Follow, 
+    foreignKey: 'following_id',
+    // otherKey: "follower_id",
+    as: 'following', 
+});
 
 // User.hasMany(Follow, { foreignKey: 'following' });
 // // User.hasMany(Follow, { foreignKey: 'follower' });

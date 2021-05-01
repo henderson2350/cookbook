@@ -83,6 +83,11 @@ router.get("/myprofile", async (req, res) => {
       attributes: { exclude: ["password"] },
       include: [{ model: Recipe }],
     });
+
+    // const followData = await User.findByPk(req.session.user_id, {
+    //   attributes: {exclude: ["password"] },
+    //   include: ["followers"]
+    // })
     
     // const followData = await Follow.findAll(
     //   {where: {follower: req.session.user_id}})
@@ -96,8 +101,11 @@ router.get("/myprofile", async (req, res) => {
     //     }
     //   }
     // })
+    
+    // const followers = followData.map((follower) => follower.get({ plain: true }))
 
     const user = userData.get({ plain: true });
+    // console.log(followers);
 
     // const following = followData.map((follow) => follow.get({plain: true}))
     // console.log(following);
