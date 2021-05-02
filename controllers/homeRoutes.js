@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Recipe, Follow } = require("../models");
+const { User, Recipe, Follow, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
@@ -47,9 +47,20 @@ router.get("/recipe/:id", async (req, res) => {
       ],
     });
 
+    const commentData = await Comment.findAll(
+      {where: {recipe_id: req.params.id}})
+
+
+
     const recipe = recipeData.get({ plain: true });
+
+    const comments = commentData.map((comment)=> comment.get({plain: true}))
+
+      console.log(comments);
+
     res.render("individual-recipe", {
       recipe,
+      comments,
       loggedIn: req.session.logged_in,
     });
   } catch (err) {
@@ -64,9 +75,19 @@ router.get("/profile/:id", async (req, res) => {
       attributes: { exclude: ["password"] },
       include: [{ model: Recipe }],
     });
+
+    const followData = await Follow.findAll(
+      {where: {follower: req.params.id},
+    include: ["Following"],
+  });
+
+    const following = followData.map((follow) => follow.get({plain: true}))
     const user = userData.get({ plain: true });
+
+
     res.render("profile", {
       ...user,
+      following,
       loggedIn: req.session.logged_in,
     });
   } catch (err) {
@@ -75,42 +96,28 @@ router.get("/profile/:id", async (req, res) => {
 });
 
 router.get("/myprofile", async (req, res) => {
- console.log("please work")
   try {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ["password"] },
       include: [{ model: Recipe }],
     });
-
-    // const followData = await User.findByPk(req.session.user_id, {
-    //   attributes: {exclude: ["password"] },
-    //   include: ["followers"]
-    // })
     
-    // const followData = await Follow.findAll(
-    //   {where: {follower: req.session.user_id}})
-
-    // const followData = await User.findAll({
-    //   include: {
-    //     model: Follow,
-    //     as: "follower",
-    //     where: {
-    //       follower: req.session.user_id
-    //     }
-    //   }
-    // })
-    
-    // const followers = followData.map((follower) => follower.get({ plain: true }))
+    const followData = await Follow.findAll(
+      {where: {follower: req.session.user_id},
+      include: ["Following"],
+    });
 
     const user = userData.get({ plain: true });
-    // console.log(followers);
 
-    // const following = followData.map((follow) => follow.get({plain: true}))
-    // console.log(following);
+    const following = followData.map((follow) => follow.get({plain: true}))
+    console.log(user);
+    console.log("-------------------------------")
+    console.log(following);
 
 
     res.render("my-profile", {
       ...user,
+      following,
       loggedIn: req.session.logged_in,
     });
   } catch (err) {

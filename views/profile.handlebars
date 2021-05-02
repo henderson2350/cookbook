@@ -15,4 +15,15 @@
 {{/if}}
 </div>
 
+Following:
+<ul>
+  {{#each following as |follow|}}
+  <li>
+    <a href="/profile/{{follow.Following.id}}">{{follow.Following.name}}</a>
+  </li>
+  {{/each}}
+</ul>
+
+<button type="button" data-id="{{id}}" id="follow-button">Follow me</button>
+
 <script src="/js/profile.js"></script>
