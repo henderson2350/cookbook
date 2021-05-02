@@ -105,7 +105,7 @@ router.get("/myprofile", async (req, res) => {
     const user = userData.get({ plain: true });
 
     const following = followData.map((follow) => follow.get({ plain: true }));
-
+    
     res.render("my-profile", {
       ...user,
       following,
@@ -127,13 +127,17 @@ router.get("/create", withAuth, async (req, res) => {
 router.get("/feed", withAuth, async (req, res) => {
   try {
     const followData = await Follow.findAll(
-      {where: {follower: req.session.user_id}})
+      {where: {follower: req.session.user_id},
+    include: ["Following"],
+    })
 
     const followers = followData.map((follower) => {
        return follower.get({plain: true})
       
     })
     
+    console.log(followers);
+
     const recipeData = await Recipe.findAll({ 
       include:[{model: User}]
       
