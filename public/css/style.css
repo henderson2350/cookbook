@@ -68,6 +68,10 @@ nav a:hover {
   color: rgb(68, 190, 150);
 }
 
+.page-name {
+  margin-bottom: -10px;
+}
+
 .container {
   display: flex;
   flex-flow: column wrap;
