@@ -3,8 +3,8 @@ const withAuth = (req, res, next) => {
       res.redirect('/login');
     } else {
       console.log("WithAuth function success", req.session.logged_in)
-      next();
     }
+    next();
   };
   
   module.exports = withAuth;

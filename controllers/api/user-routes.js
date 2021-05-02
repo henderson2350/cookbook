@@ -1,5 +1,7 @@
 const router = require('express').Router();
+const { response } = require('express');
 const { User } = require('../../models');
+const Follow = require('../../models/Follow');
 
 router.post('/', async (req, res) => {
   try {
@@ -67,5 +69,19 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
+router.post('/follow/:id', async (req, res) => {
+  try {
+    const followData = Follow.create({
+      follower: req.session.user_id,
+      following: req.params.id
+    })
+
+    if (response.ok) {
+      res.status(200).json(followData)
+    }
+  } catch (err) {
+    res.status(500)
+  }
+})
 
 module.exports = router;

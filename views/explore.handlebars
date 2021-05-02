@@ -1,13 +1,32 @@
 <header>
 </header>
 <main>
-    <h3 style="text-align: center; margin: 20px">Explore</h3>
     {{#if loggedIn}}
-    <section style= "text-align: center"class = 'flex-row justify-center'>
-        {{#each recipes as |recipe|}}
-        {{> recipe-details}}
-        {{/each}}
-    </section>
+    <div class='row'>
+        <div class='col-sm-6'>
+            <section style="text-align: left" class='flex-row justify-center'>
+                <h3 style="text-align: center; margin: 20px">Recipes</h3>
+                <div style="">
+                    {{#each recipes as |recipe|}}
+                    {{> recipe-details}}
+                    {{/each}}
+                </div>
+            </section>
+        </div>
+        <div class='col-sm-6'>
+            <h3 style="text-align: left; margin: 20px">Featured Recipe</h3>
+            
+            <div class="card" style="width: 32rem;">
+                <div class="card-body">
+                    <a href="/recipe/{{randomRecipe.id}}">
+                    <h5 style="margin: 10px" class="card-title">{{randomRecipe.name}} by {{randomRecipe.user.name}}</h5>
+                    </a>
+                    <h6 style="margin: 10px" class="card-subtitle mb-2 text-muted">{{randomRecipe.ingredients}}</h6>
+                    <p style="margin: 10px" class="card-text">{{randomRecipe.instructions}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 {{else}}
 <a href='/login'>Please login to view this page.</a>
