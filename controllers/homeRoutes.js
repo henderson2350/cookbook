@@ -19,7 +19,6 @@ router.get("/", async (req, res) => {
     const randomNumber = Math.floor(Math.random() * recipeData.length);
     const randomRecipe = recipes[randomNumber];
 
-    console.log(randomRecipe);
 
     res.render("explore", {
       recipes,
@@ -54,8 +53,6 @@ router.get("/recipe/:id", async (req, res) => {
     const recipe = recipeData.get({ plain: true });
 
     const comments = commentData.map((comment) => comment.get({ plain: true }));
-
-    console.log(comments);
 
     res.render("individual-recipe", {
       recipe,
@@ -108,9 +105,6 @@ router.get("/myprofile", async (req, res) => {
     const user = userData.get({ plain: true });
 
     const following = followData.map((follow) => follow.get({ plain: true }));
-    console.log(user);
-    console.log("-------------------------------");
-    console.log(following);
 
     res.render("my-profile", {
       ...user,
@@ -148,13 +142,7 @@ router.get("/feed", withAuth, async (req, res) => {
     const recipes = recipeData.map((recipe) => {
       return recipe.get({plain: true});
     })
-    console.log(recipes);
-    
 
-    
-
-
-    console.log(followers);
     res.render("feed", { followers, recipes, loggedIn: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
