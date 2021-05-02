@@ -1,14 +1,14 @@
 <div class="col-12">
-    {{#ifCond following user_id}}
-        {{#each recipes as |recipe|}}
-        <div class="card mb-4">
-            <div class="card-body">
-                <a href="/recipe/{{id}}">
-                    <h5 style="margin: 10px" class="card-title">{{name}} by {{user.username}}</h5>
-                </a>
-                
-            </div>
+    {{!-- {{#ifCond following user_id}} --}}
+    {{#each filteredRecipes as |recipe|}}
+    <div class="card mb-4">
+        <div class="card-body">
+            <a href="/recipe/{{recipe.id}}">
+                <h5 style="margin: 10px" class="card-title">{{recipe.name}} by {{user.username}}</h5>
+            </a>
+
         </div>
-        {{/each}}
-    {{/ifCond}}
+    </div>
+    {{/each}}
+    {{!-- {{/ifCond}} --}}
 </div>

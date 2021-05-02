@@ -1,13 +1,7 @@
 <div class="row">
-<<<<<<< HEAD
-      <h3>My Recipes:</h3>
-    {{#if recipes.length}}
-    <div class="col-md-6 project-list">
-=======
   <h3>My Recipes:</h3>
   {{#if recipes.length}}
   <div class="col-md-6 project-list">
->>>>>>> 8263f3b90c52faf2255e7cb88b3d67c3f4ac804d
 
     {{#each recipes as |recipe|}}
     <div class="row mb-2">
@@ -15,32 +9,13 @@
         <h4><a href="/recipe/{{recipe.id}}">{{recipe.name}}</a></h4>
       </div>
     </div>
-<<<<<<< HEAD
-    {{/if}}
-  <div class="col-md-6">
-    <section style = "margin: 20px; width: 24rem" class=''>
-            <div class='card-body'>
-                {{!-- {{#if id = recipe.user_id}} --}}
-                <h3>{{name}}</h3>
-                <hr class="pb-2 mx-auto">
-                {{!-- {{/if}} --}}
-                <p>{{username}}</p>
-                <p>{{bio}}</p>
-          </div>
-    </section>
-<p>
-Following:
-</p>
-<ul>
-  {{#each following as |follow|}}
-  <li>
-    <a href="/profile/{{follow.Following.id}}">{{follow.Following.name}}</a>
-  </li>
-  {{/each}}
-</ul>
-=======
     {{/each}}
   </div>
+  {{else}}
+    <div class="col-md-6 project-list">
+      <p>No recipes added yet!</p>
+      <a href="/create">Click here to add a new recipe!</a>
+    </div>
   {{/if}}
   <div class="col-md-6">
     <section style="margin: 20px; width: 24rem" class=''>
@@ -63,6 +38,5 @@ Following:
       </li>
       {{/each}}
     </ul>
->>>>>>> 8263f3b90c52faf2255e7cb88b3d67c3f4ac804d
   </div>
 </div>

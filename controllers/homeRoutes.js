@@ -19,7 +19,6 @@ router.get("/", async (req, res) => {
     const randomNumber = Math.floor(Math.random() * recipeData.length);
     const randomRecipe = recipes[randomNumber];
 
-
     res.render("explore", {
       recipes,
       randomRecipe,
@@ -38,7 +37,6 @@ router.get("/login", (req, res) => {
   }
   res.render("login");
 });
-
 
 router.get("/recipe/:id", async (req, res) => {
   try {
@@ -106,7 +104,7 @@ router.get("/myprofile", async (req, res) => {
     const user = userData.get({ plain: true });
 
     const following = followData.map((follow) => follow.get({ plain: true }));
-    
+
     res.render("my-profile", {
       ...user,
       following,
@@ -125,32 +123,45 @@ router.get("/create", withAuth, async (req, res) => {
   }
 });
 
-router.get("/feed", withAuth, async (req, res) => {
-  try {
-    const followData = await Follow.findAll(
-      {where: {follower: req.session.user_id},
-    include: ["Following"],
-    })
+// router.get("/feed", withAuth, async (req, res) => {
+//   try {
+//     const followData = await Follow.findAll({
+//       where: { follower: req.session.user_id },
+//       include: ["Following"],
+//     });
 
-    const followers = followData.map((follower) => {
-       return follower.get({plain: true})
-    })
-    
-    console.log(followers);
+//     const followers = followData.map((follower) => {
+//       return follower.get({ plain: true });
+//     });
 
-    const recipeData = await Recipe.findAll({ 
-      include:[{model: User}]
-      
-    });
+//     const followingIds = followers.map((follow) => follow.id);
 
-    const recipes = recipeData.map((recipe) => {
-      return recipe.get({plain: true});
-    })
+//     console.log("following ids", followingIds);
 
-    res.render("feed", { followers, recipes, loggedIn: req.session.logged_in });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     const recipeData = await Recipe.findAll({
+//       include: [{ model: User }],
+//     });
+
+//     const recipes = recipeData.map((recipe) => {
+//       return recipe.get({ plain: true });
+//     });
+
+//     // console.log("recipes", recipes);
+
+//     const filteredRecipes = recipes.filter((recipe) =>
+//       followingIds.includes(recipe.user_id)
+//     );
+
+//     console.log("filtered recipes", filteredRecipes);
+
+//     res.render("feed", {
+//       followers,
+//       filteredRecipes,
+//       loggedIn: req.session.logged_in,
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 module.exports = router;
