@@ -183,3 +183,7 @@ div.content {
   color: white;
   margin-top: 20px
 }
+
+.card-body{
+  background-color: white;
+}
