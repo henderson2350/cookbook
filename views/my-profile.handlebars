@@ -1,7 +1,7 @@
 <div class="row">
+      <h3>My Recipes:</h3>
     {{#if recipes.length}}
     <div class="col-md-6 project-list">
-      <h3>My Recipes:</h3>
 
       {{#each recipes as |recipe|}}
       <div class="row mb-2">
@@ -12,7 +12,7 @@
       {{/each}}
     </div>
     {{/if}}
-  <div class="col-md-6"
+  <div class="col-md-6">
     <section style = "margin: 20px; width: 24rem" class=''>
             <div class='card-body'>
                 {{!-- {{#if id = recipe.user_id}} --}}
@@ -23,8 +23,7 @@
                 <p>{{bio}}</p>
           </div>
     </section>
-  </div>
-</div>
+<p>
 Following:
 </p>
 <ul>
@@ -34,4 +33,5 @@ Following:
   </li>
   {{/each}}
 </ul>
+  </div>
 </div>

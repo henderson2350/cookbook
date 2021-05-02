@@ -1,8 +1,8 @@
+<div class="row">
+    <h3>{{name}}'s Recipes:</h3>
 {{#if recipes.length}}
 <div class="col-md-6 project-list">
   <div>
-    <h3>{{name}}'s Recipes: {{id}}</h3>
-    <button type="button" data-id="{{id}}" id="follow-button">Follow me</button>
   </div>
   {{#each recipes as |recipe|}}
   <div class="row mb-2">
@@ -13,11 +13,21 @@
   {{/each}}
 </div>
 {{/if}}
-</div>
-
-<p style="margin: 20px">
+<div class="col-md-6">
+    <section style = "margin: 20px; width: 24rem" class=''>
+            <div class='card-body'>
+                {{!-- {{#if id = recipe.user_id}} --}}
+                <h3 class="page-name">{{name}}</h3>
+    <button type="button" data-id="{{id}}" id="follow-button">Follow me</button>
+                <hr class="pb-2 mx-auto">
+                {{!-- {{/if}} --}}
+                <p>{{username}}</p>
+                <p>{{bio}}</p>
+          </div>
+    </section>
+    <p style="margin: 20px">
 Following:
-</p style="margin: 20px">
+</p>
 <ul>
   {{#each following as |follow|}}
   <li>
@@ -25,5 +35,8 @@ Following:
   </li>
   {{/each}}
 </ul>
+  </div>
+</div>
+
 
 <script src="/js/profile.js"></script>

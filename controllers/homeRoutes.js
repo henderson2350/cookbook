@@ -133,7 +133,6 @@ router.get("/feed", withAuth, async (req, res) => {
 
     const followers = followData.map((follower) => {
        return follower.get({plain: true})
-      
     })
     
     console.log(followers);

@@ -48,4 +48,9 @@ User.belongsToMany(User, {
 Follow.belongsTo(User, { foreignKey: 'following', as: 'Following' });
 Follow.belongsTo(User, { foreignKey: 'follower', as: 'Follower' });
 
+// Recipe.belongsTo(Follow,{
+//     through: User,
+//     foreignKey: "id",
+// });
+
 module.exports = { User, Recipe, Comment, Follow}
