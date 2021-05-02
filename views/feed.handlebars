@@ -1,1 +1,15 @@
-<p>hello</p>
+<div class="col-12">
+    {{#ifCond following user_id}}
+        {{#each recipes as |recipe|}}
+        <div class="card mb-4">
+            <div class="card-body">
+                <a href="/recipe/{{id}}">
+                    <h5 style="margin: 10px" class="card-title">{{name}} by {{user.username}}</h5>
+                </a>
+                <h6 style="margin: 10px" class="card-subtitle mb-2 text-muted">{{ingredients}}</h6>
+                <p style="margin: 10px" class="card-text">{{instructions}}</p>
+            </div>
+        </div>
+        {{/each}}
+    {{/ifCond}}
+</div>

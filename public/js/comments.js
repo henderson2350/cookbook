@@ -24,3 +24,4 @@ document
 .querySelector('#comment-button')
 .addEventListener('click', newCommentHandler);
 
+
