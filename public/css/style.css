@@ -2,7 +2,7 @@
   --primary: #222224;
   --secondary: #d3d6da;
   --background-primary: #d3d6da;
-  --background-secondary: #a33232;
+  --background-secondary: #fe6262;
   --error: #e42e01;
   --grey: #5f6163;
 }
@@ -144,7 +144,7 @@ div.content {
     clear: both;
   } */
 .head {
-  border-bottom: 20px solid #be5252;
+  border-bottom: 20px solid #da4e4e;
 }
 
 .middleCol {
@@ -174,4 +174,12 @@ div.content {
 #follow-button {
   margin: 30px 26px 0 0;
   width: 100px;
+}
+
+#comment-button {
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: #da4e4e;
+  color: white;
+  margin-top: 20px
 }

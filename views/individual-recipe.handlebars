@@ -1,4 +1,4 @@
-<section>
+<section style="margin: 20px">
     <h3>{{recipe.name}}</h3>
     <a href="../profile/{{recipe.user.id}}">
         <p>By: {{recipe.user.name}}</p>
@@ -8,13 +8,14 @@
     <div>
         <form class='form new-comment-form'>
             <textarea class="form-input w-100" id="comment"></textarea>
-            <button type='button' class='btn btn-comment' id="comment-button" data-id="{{recipe.id}}">post</button>
+            <button type='button' class='btn btn-comment' id="comment-button" data-id="{{recipe.id}}">Post comment</button>
         </form>
     </div>
-<ul>
+<ul style="margin-top: 20px">
+  Comments
   {{#each comments as |comment|}}
   <li>
-    <p>{{comment.comment}}</p>
+    <p>{{comment.comment}} -- {{comment.user.name}}</p>
   </li>
   {{/each}}
 </ul>

@@ -20,7 +20,6 @@ router.post('/new/:id', async (req, res) => {
     }
 });
 
-
 router.get('/:recipe/:user', async (req, res) => {
     try {
         const commentData = Comment.findAll({
