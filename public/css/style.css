@@ -195,3 +195,8 @@ div.content {
 .card-body{
   background-color: white;
 }
+
+.box2 {
+  background:linear-gradient(to right,#be5252,#d3d6da);
+  mask-image:linear-gradient(#da4e4e,transparent);   
+}
