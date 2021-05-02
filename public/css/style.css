@@ -170,3 +170,7 @@ div.content {
   font-size: medium;
   font-weight: bold;
 }
+
+.card-body{
+  background-color: white;
+}
