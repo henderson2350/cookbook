@@ -170,3 +170,35 @@ div.content {
   font-size: medium;
   font-weight: bold;
 }
+
+.sign-up {
+  font-size: larger;
+}
+
+.login {
+  font-size: larger;
+}
+
+#username-login {
+  font-size:large;
+}
+
+#password-login {
+  font-size:large;
+}
+
+#name-signup {
+  font-size:large;
+}
+
+#username-signup {
+  font-size:large;
+}
+
+#password-signup {
+  font-size:large;
+}
+
+#bio-signup {
+  font-size:large;
+}
