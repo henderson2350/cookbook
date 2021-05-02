@@ -170,3 +170,8 @@ div.content {
   font-size: medium;
   font-weight: bold;
 }
+
+#follow-button {
+  margin: 30px 26px 0 0;
+  width: 100px;
+}
