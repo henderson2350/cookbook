@@ -189,14 +189,14 @@ div.content {
   padding-right: 30px;
   background-color: #da4e4e;
   color: white;
-  margin-top: 20px
+  margin-top: 20px;
 }
 
-.card-body{
+.card-body {
   background-color: white;
 }
 
 .box2 {
-  background:linear-gradient(to right,#be5252,#d3d6da);
-  mask-image:linear-gradient(#da4e4e,transparent);   
+  background: linear-gradient(to right, #fe6262, #d3d6da);
+  mask-image: linear-gradient(#da4e4e, transparent);
 }

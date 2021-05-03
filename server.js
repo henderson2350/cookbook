@@ -4,7 +4,6 @@ const routes = require("./controllers");
 const exphbs = require("express-handlebars");
 const helpers = require("./utils/helpers");
 const session = require("express-session");
-const food = require('food');
 
 // import sequelize connection
 

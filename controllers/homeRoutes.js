@@ -124,37 +124,28 @@ router.get("/create", withAuth, async (req, res) => {
 });
 
 router.get("/feed", withAuth, async (req, res) => {
-  console.log(req.session.user_id)
+  console.log(req.session.user_id);
   try {
     const followData = await Follow.findAll({
       where: { follower: req.session.user_id },
       include: ["Following"],
     });
-
     const followers = followData.map((follower) => {
       return follower.get({ plain: true });
     });
-
     const followingIds = followers.map((follow) => follow.following);
-
     console.log("following ids", followingIds);
-
     const recipeData = await Recipe.findAll({
       include: [{ model: User }],
     });
-
     const recipes = recipeData.map((recipe) => {
       return recipe.get({ plain: true });
     });
-
     // console.log("recipes", recipes);
-
     const filteredRecipes = recipes.filter((recipe) =>
       followingIds.includes(recipe.user_id)
     );
-
     console.log("filtered recipes", filteredRecipes);
-
     res.render("feed", {
       followers,
       filteredRecipes,
@@ -164,5 +155,4 @@ router.get("/feed", withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 module.exports = router;
