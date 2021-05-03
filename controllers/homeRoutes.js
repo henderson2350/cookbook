@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { User, Recipe, Follow, Comment } = require("../models");
-const { findAll } = require("../models/User");
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
@@ -141,7 +140,7 @@ router.get("/feed", withAuth, async (req, res) => {
     const recipes = recipeData.map((recipe) => {
       return recipe.get({ plain: true });
     });
-    // console.log("recipes", recipes);
+
     const filteredRecipes = recipes.filter((recipe) =>
       followingIds.includes(recipe.user_id)
     );

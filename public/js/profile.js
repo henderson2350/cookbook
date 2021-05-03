@@ -9,7 +9,7 @@ const followButtonHandler = async (event) => {
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
-      document.location.replace('/myprofile');
+      document.location.replace("/myprofile");
     } else {
       alert("Failed to follow");
     }
