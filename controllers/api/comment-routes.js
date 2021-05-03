@@ -1,5 +1,4 @@
 const router = require("express").Router();
-// const { response } = require("express");
 const { Comment, Recipe, User } = require("../../models");
 
 router.post("/new/:id", async (req, res) => {
@@ -10,11 +9,8 @@ router.post("/new/:id", async (req, res) => {
       user_id: req.session.user_id,
       recipe_id: req.params.id,
     });
-      res.status(200).json(newComment);
+    res.status(200).json(newComment);
 
-    // if (response.ok) {
-    //   console.log("comment");
-    // }
   } catch (err) {
     res.status(400).json(err);
     console.log("Error");

@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { User, Recipe, Follow, Comment } = require("../models");
-const { findAll } = require("../models/User");
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
@@ -123,45 +122,36 @@ router.get("/create", withAuth, async (req, res) => {
   }
 });
 
-// router.get("/feed", withAuth, async (req, res) => {
-//   try {
-//     const followData = await Follow.findAll({
-//       where: { follower: req.session.user_id },
-//       include: ["Following"],
-//     });
+router.get("/feed", withAuth, async (req, res) => {
+  console.log(req.session.user_id);
+  try {
+    const followData = await Follow.findAll({
+      where: { follower: req.session.user_id },
+      include: ["Following"],
+    });
+    const followers = followData.map((follower) => {
+      return follower.get({ plain: true });
+    });
+    const followingIds = followers.map((follow) => follow.following);
+    console.log("following ids", followingIds);
+    const recipeData = await Recipe.findAll({
+      include: [{ model: User }],
+    });
+    const recipes = recipeData.map((recipe) => {
+      return recipe.get({ plain: true });
+    });
 
-//     const followers = followData.map((follower) => {
-//       return follower.get({ plain: true });
-//     });
-
-//     const followingIds = followers.map((follow) => follow.id);
-
-//     console.log("following ids", followingIds);
-
-//     const recipeData = await Recipe.findAll({
-//       include: [{ model: User }],
-//     });
-
-//     const recipes = recipeData.map((recipe) => {
-//       return recipe.get({ plain: true });
-//     });
-
-//     // console.log("recipes", recipes);
-
-//     const filteredRecipes = recipes.filter((recipe) =>
-//       followingIds.includes(recipe.user_id)
-//     );
-
-//     console.log("filtered recipes", filteredRecipes);
-
-//     res.render("feed", {
-//       followers,
-//       filteredRecipes,
-//       loggedIn: req.session.logged_in,
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
+    const filteredRecipes = recipes.filter((recipe) =>
+      followingIds.includes(recipe.user_id)
+    );
+    console.log("filtered recipes", filteredRecipes);
+    res.render("feed", {
+      followers,
+      filteredRecipes,
+      loggedIn: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 module.exports = router;
