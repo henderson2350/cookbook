@@ -1,12 +1,9 @@
 # cookbook
 ## Description
-This is our cooking-oriented social media platform. Our site allows users to post their own recipes as well as find new ones. In addition, the user may follow others, enabling them to view and comment on posts.
+Full stack application that is a social media platform for recipes. Users can create posts, follow friends, view a feed, and explore recipes all over the world. Link to deployed site: https://intense-savannah-49257.herokuapp.com/
 
-### Video
-![](Link)
-
-### Photos
-![](Link)
+## Photos
+![public/photos/screenshot.png]
 
 - - - - - - - - - - - - - - - - - -
 
@@ -19,10 +16,10 @@ This is our cooking-oriented social media platform. Our site allows users to pos
 - - - - - - - - - - - - - - - - - -
 
 ## Installation
-
+For local use, download our code.
 
 ## Usage
-
+Use our simple interface to create posts, follow users, view profiles and recipes. 
 
 ## Contributing
 Github: henderson2350, jacksonpeak1, scwithington, shrwnwilliams, LS-T
