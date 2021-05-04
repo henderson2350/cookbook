@@ -3,7 +3,7 @@
 Full stack application that is a social media platform for recipes. Users can create posts, follow friends, view a feed, and explore recipes all over the world. Link to deployed site: https://intense-savannah-49257.herokuapp.com/
 
 ## Photos
-![Deployed screenshot](public\photos\screenshot.png)
+![Deployed screenshot](./public/photos/screenshot.png)
 
 - - - - - - - - - - - - - - - - - -
 
